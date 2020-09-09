@@ -1,16 +1,15 @@
 import { Request, Response } from 'express';
 
-import { getRepository } from 'typeorm';
-import Question from '../../typeorm/entities/Question';
+import { container } from 'tsyringe';
+import CreateQuestionService from '@modules/questions/services/CreateQuestionService';
 
 export default class QuestionsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { title, text } = request.body;
 
-    const repo = getRepository(Question);
+    const createQuestion = container.resolve(CreateQuestionService);
 
-    const question = repo.create({ title, text });
-    await repo.save(question);
+    const question = await createQuestion.run({ title, text });
 
     return response.json(question);
   }

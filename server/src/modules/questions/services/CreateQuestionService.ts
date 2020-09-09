@@ -12,7 +12,7 @@ export default class CreateQuestionService {
   constructor(
     @inject('QuestionsRepository')
     private questionsRepository: IQuestionsRepository,
-  ) { }
+  ) {}
 
   public async run({ title, text }: IRequestDTO): Promise<IQuestion> {
     const question = await this.questionsRepository.create({ title, text });
