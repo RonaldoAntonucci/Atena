@@ -1,15 +1,11 @@
 import { Router } from 'express';
 
-import IQuestion from '@modules/questions/models/IQuestion';
+import QuestionsController from '../controllers/QuestionsController';
 
 const questionsRouter = Router();
 
-questionsRouter.post('/', (request, response) => {
-  const { title, text } = request.body;
+const questionsController = new QuestionsController();
 
-  const question: IQuestion = { id: 'id', title, text };
-
-  return response.json(question);
-});
+questionsRouter.post('/', questionsController.create);
 
 export default questionsRouter;

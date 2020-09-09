@@ -11,7 +11,7 @@ describe('Create Questions - e2e', () => {
   });
 
   it('should be able to create a Question', async () => {
-    const questionAttrs = FakeQuestion({ id: '1' });
+    const questionAttrs = FakeQuestion();
 
     const response = await request(app.getServer())
       .post('/')
@@ -21,6 +21,8 @@ describe('Create Questions - e2e', () => {
     const newQuestion = response.body;
 
     expect(newQuestion).toHaveProperty('id');
+    expect(newQuestion).toHaveProperty('createdAt');
+    expect(newQuestion).toHaveProperty('updatedAt');
     expect(newQuestion).toHaveProperty('title', questionAttrs.title);
     expect(newQuestion).toHaveProperty('text', questionAttrs.text);
   });

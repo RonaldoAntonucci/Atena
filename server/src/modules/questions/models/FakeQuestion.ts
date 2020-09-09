@@ -11,5 +11,9 @@ export default (attrs: Partial<IQuestion> = {}): IQuestion => ({
   title: chance.string({ length: 40 }),
 
   text: chance.string({ length: 400 }),
+
+  updatedAt: new Date(),
+
+  createdAt: new Date(),
   ...attrs,
 });

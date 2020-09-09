@@ -5,5 +5,9 @@ export default interface IQuestion {
 
   text: string;
 
-  disabled?: Date;
+  disabledAt?: Date;
+
+  createdAt: Date;
+
+  updatedAt: Date;
 }
