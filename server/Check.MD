@@ -16,7 +16,7 @@
 
 [x] - criar migration de questions.
 
-[ ] - persistir os questions no banco.
+[x] - persistir os questions no banco.
 
 *[ ] - subir o projeto pra nuvem.*
 
