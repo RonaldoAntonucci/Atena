@@ -33,5 +33,15 @@
     "import/resolver": {
       "typescript": {}
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "__tests__/integration/*.e2e-spec.ts"
+      ],
+      "rules": {
+        "import/no-unresolved": "off"
+      }
+    }
+  ]
 }

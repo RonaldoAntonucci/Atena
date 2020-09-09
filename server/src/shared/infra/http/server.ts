@@ -22,4 +22,8 @@ export default class HttpServer {
 
     return this.server;
   }
+
+  public getServer(): Express {
+    return this.server;
+  }
 }

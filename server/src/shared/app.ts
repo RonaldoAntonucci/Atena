@@ -1,3 +1,5 @@
+import { Express } from 'express';
+
 import Server from './infra/http/server';
 
 import Routes from './infra/http/routes/index.routes';
@@ -19,5 +21,9 @@ export default class App {
 
     // eslint-disable-next-line no-console
     console.log(`Server started on port ${port}!`);
+  }
+
+  public http(): Express {
+    return this.server.getServer();
   }
 }
