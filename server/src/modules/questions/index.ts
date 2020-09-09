@@ -1,4 +1,4 @@
 import QuestionsRouter from './infra/http/routes/questions.routes';
-import FakeQuestion from './models/FakeQuestion';
+import FakeQuestion from './models/fakes/FakeQuestion';
 
 export { QuestionsRouter, FakeQuestion };
