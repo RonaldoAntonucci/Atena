@@ -38,7 +38,9 @@
   "overrides": [
     {
       "files": [
-        "__tests__/**/*.e2e-spec.ts"
+        "__tests__/**/*.e2e-spec.ts",
+        "__tests__/setup.ts",
+        "__tests__/util/*.ts"
       ],
       "rules": {
         "import/no-unresolved": "off"

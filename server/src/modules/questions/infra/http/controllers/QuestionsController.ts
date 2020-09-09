@@ -1,12 +1,16 @@
 import { Request, Response } from 'express';
 
-import Question from '../../../models/FakeQuestion';
+import { getRepository } from 'typeorm';
+import Question from '../../typeorm/entities/Question';
 
 export default class QuestionsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { title, text } = request.body;
 
-    const question = Question({ title, text });
+    const repo = getRepository(Question);
+
+    const question = repo.create({ title, text });
+    await repo.save(question);
 
     return response.json(question);
   }

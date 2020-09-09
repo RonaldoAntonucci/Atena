@@ -2,11 +2,16 @@ import request from 'supertest';
 
 import Server from 'shared/infra/http/server';
 import { QuestionsRouter, FakeQuestion } from 'modules/questions';
+import Database from '../util/Database';
 
 describe('Create Questions - e2e', () => {
   let app: Server;
+  let db: Database;
 
   beforeAll(async () => {
+    db = new Database();
+    await db.start();
+
     app = new Server({ routes: QuestionsRouter });
   });
 
@@ -25,5 +30,10 @@ describe('Create Questions - e2e', () => {
     expect(newQuestion).toHaveProperty('updatedAt');
     expect(newQuestion).toHaveProperty('title', questionAttrs.title);
     expect(newQuestion).toHaveProperty('text', questionAttrs.text);
+  });
+
+  afterAll(async () => {
+    await db.truncate();
+    await db.stop();
   });
 });

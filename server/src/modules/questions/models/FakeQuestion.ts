@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import Chance from 'chance';
 
 import IQuestion from './IQuestion';
@@ -6,7 +6,7 @@ import IQuestion from './IQuestion';
 const chance = new Chance();
 
 export default (attrs: Partial<IQuestion> = {}): IQuestion => ({
-  id: uuid(),
+  id: uuidv4(),
 
   title: chance.string({ length: 40 }),
 

@@ -12,9 +12,11 @@
 
 [x] - configurar TypeOrm.
 
-[ ] - criar migrations com plugin de UUIDV4.
+[x] - criar migrations com plugin de UUIDV4.
 
-[ ] - criar migration de questions.
+[x] - criar migration de questions.
+
+[ ] - persistir os questions no banco.
 
 *[ ] - subir o projeto pra nuvem.*
 
