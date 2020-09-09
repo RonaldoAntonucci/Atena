@@ -2,8 +2,8 @@
 
 [x] - Configurar typescript.
 
-[ ] - Configurar Eslint.
+[x] - Configurar Eslint.
 
-[ ] - instalar express.
+[x] - instalar express.
 
 [ ] - configurar Jest.
