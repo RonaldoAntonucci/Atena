@@ -18,15 +18,15 @@
 
 [x] - persistir os questions no banco.
 
-*[ ] - subir o projeto pra nuvem.*
+[x] - Create Question service.
+
+[x] - configuração de containers.
+
+[x] - *subir o projeto pra nuvem.*
 
 
 *** *10/09/20*
 
-[ ] - criar o primeiro service.
-
-[ ] - configurar os containers.
-
 [ ] - configurar o dbug do vscode.
 
-*[ ] - subir o projeto pra nuvem.*
+[ ] - *subir o projeto pra nuvem.*
