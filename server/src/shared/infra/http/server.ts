@@ -11,8 +11,10 @@ interface IStartOptions {
 export default class HttpServer {
   private server: Express;
 
-  constructor({ routes = [] }: IHttpServerOpts) {
+  constructor({ routes = [] }: IHttpServerOpts = {}) {
     this.server = express();
+
+    this.server.use(express.json());
 
     this.server.use(routes);
   }

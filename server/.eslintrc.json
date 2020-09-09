@@ -37,10 +37,18 @@
   "overrides": [
     {
       "files": [
-        "__tests__/integration/*.e2e-spec.ts"
+        "__tests__/**/*.e2e-spec.ts"
       ],
       "rules": {
         "import/no-unresolved": "off"
+      }
+    },
+    {
+      "files": [
+        "src/modules/**/index.ts"
+      ],
+      "rules": {
+        "import/prefer-default-export": "off"
       }
     }
   ]
