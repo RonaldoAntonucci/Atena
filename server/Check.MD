@@ -10,7 +10,7 @@
 
 [x] - configurar Jest.
 
-[x] - configurar TypeOrm.
+[ ] - configurar TypeOrm.
 
 [ ] - criar o primeiro service.
 

@@ -1,19 +1,23 @@
+import './bootstrap';
+
 import { Express } from 'express';
 
-import Server from './infra/http/server';
+import Server from 'shared/infra/http/server';
 
-import Routes from './infra/http/routes/index.routes';
+import Routes from 'shared/infra/http/routes/index.routes';
+
+import Database from 'shared/infra/typeorm';
 
 export default class App {
   private server: Server;
 
+  private database: Database;
+
   public async start(): Promise<void> {
-    // this.databaseCon = new Database();
-    // await this.databaseCon.start();
+    this.database = new Database();
 
+    await this.database.start();
     this.server = new Server({ routes: Routes });
-
-    // console.log('Server started on port 3333!');
   }
 
   public listen(port: number): void {

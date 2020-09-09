@@ -5,3 +5,5 @@ tmp/*
 coverage
 .env
 ormconfig.json
+database.json
+database.test.json
