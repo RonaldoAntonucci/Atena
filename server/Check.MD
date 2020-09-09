@@ -10,14 +10,18 @@
 
 [x] - configurar Jest.
 
-[ ] - configurar TypeOrm.
+[x] - configurar TypeOrm.
 
-[ ] - criar o primeiro service.
+[ ] - criar migrations com plugin de UUIDV4.
+
+[ ] - criar migration de questions.
 
 *[ ] - subir o projeto pra nuvem.*
 
 
 *** *10/09/20*
+
+[ ] - criar o primeiro service.
 
 [ ] - configurar os containers.
 
