@@ -27,9 +27,12 @@
 
 *** *10/09/20*
 
-[ ] - Regra de negócio Create Question Service.
-    [ ] - Teste unitário.
-    [ ] - validação dos títulos.
+[x] - Error handler.
+
+[x] - Regra de negócio Create Question Service.
+    [x] - Teste unitário.
+    [x] - validação dos títulos.
+    [ ] - teste de integração.
 
 [ ] - validar dados de entrada.
 
