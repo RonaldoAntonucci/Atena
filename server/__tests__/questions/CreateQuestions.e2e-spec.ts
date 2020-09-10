@@ -1,30 +1,26 @@
+import 'express-async-errors';
 import request from 'supertest';
 import { Repository, getRepository } from 'typeorm';
 
-import Server from 'shared/infra/http/server';
 import { QuestionsRouter, FakeQuestion } from 'modules/questions';
 import Question from '@modules/questions/infra/typeorm/entities/Question';
-import Database from '../util/Database';
+import App from '../util/TestApp';
 
 describe('Create Questions - e2e', () => {
-  let app: Server;
-  let db: Database;
+  let app: App;
   let questionsRepo: Repository<Question>;
 
   beforeAll(async () => {
-    db = new Database();
-    await db.start();
-    questionsRepo = getRepository('Question');
+    app = new App();
+    await app.start({ routes: QuestionsRouter });
 
-    app = new Server({ routes: QuestionsRouter });
+    questionsRepo = getRepository(Question);
   });
 
-  it('should be able to create a Question - e2e', async () => {
+  it('should be able to create a Question. - e2e', async () => {
     const questionAttrs = FakeQuestion();
 
-    const response = await request(app.getServer())
-      .post('/')
-      .send(questionAttrs);
+    const response = await request(app.http()).post('/').send(questionAttrs);
 
     expect(response.status).toBe(200);
     const newQuestion = response.body;
@@ -49,8 +45,26 @@ describe('Create Questions - e2e', () => {
     expect(persistedQuestion).toHaveProperty('text', newQuestion.text);
   });
 
+  it('should not be able to create new Questions with used title. - e2e', async () => {
+    const existentQuestion = questionsRepo.create(FakeQuestion());
+    await questionsRepo.save(existentQuestion);
+
+    const response = await request(app.http())
+      .post('/')
+      .send({ title: existentQuestion.title, text: 'new text' });
+
+    expect(response.status).toBe(400);
+    const { body } = response;
+
+    expect(body).toHaveProperty('status', 'error');
+    expect(body).toHaveProperty('message', 'This title already in use.');
+  });
+
+  beforeEach(async () => {
+    await app.truncate();
+  });
+
   afterAll(async () => {
-    await db.truncate();
-    await db.stop();
+    await app.stop();
   });
 });

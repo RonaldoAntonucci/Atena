@@ -32,7 +32,7 @@
 [x] - Regra de negócio Create Question Service.
     [x] - Teste unitário.
     [x] - validação dos títulos.
-    [ ] - teste de integração.
+    [x] - teste de integração.
 
 [ ] - validar dados de entrada.
 

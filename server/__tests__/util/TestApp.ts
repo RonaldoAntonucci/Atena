@@ -1,8 +1,8 @@
-import DB from 'shared/infra/typeorm';
+import App from 'shared/app';
 
-export default class Database extends DB {
+export default class TestApp extends App {
   public async truncate(): Promise<void> {
-    const conn = this.getConn();
+    const conn = this.database.getConn();
 
     const clearPromises: Promise<void>[] = [];
 
