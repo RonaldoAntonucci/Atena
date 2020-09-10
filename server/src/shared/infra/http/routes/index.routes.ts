@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
+import { QuestionsRouter } from 'modules/questions';
+
 const routes = Router();
 
-routes.get('/', (_, res) => res.json({ message: 'ok' }));
+routes.use('/questions', QuestionsRouter);
 
 export default routes;
