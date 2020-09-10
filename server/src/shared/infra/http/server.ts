@@ -1,7 +1,15 @@
-import express, { Express, Router } from 'express';
+import express, {
+  Express,
+  Router,
+  ErrorRequestHandler,
+  Handler,
+} from 'express';
 
 interface IHttpServerOpts {
-  routes?: Router | Router[];
+  routes?: Router | [Router];
+  handlers?: ErrorRequestHandler | ErrorRequestHandler[];
+  middlewares?: Handler | [Handler];
+  jsonApi?: boolean;
 }
 
 interface IStartOptions {
@@ -11,12 +19,28 @@ interface IStartOptions {
 export default class HttpServer {
   private server: Express;
 
-  constructor({ routes = [] }: IHttpServerOpts = {}) {
+  constructor(
+    { routes, middlewares, handlers, jsonApi = true }: IHttpServerOpts = {
+      jsonApi: true,
+    },
+  ) {
     this.server = express();
 
-    this.server.use(express.json());
+    if (jsonApi) {
+      this.server.use(express.json());
+    }
 
-    this.server.use(routes);
+    if (middlewares) {
+      this.server.use(middlewares);
+    }
+
+    if (routes) {
+      this.server.use(routes);
+    }
+
+    if (handlers) {
+      this.server.use(handlers);
+    }
   }
 
   public start({ port }: IStartOptions): Express {

@@ -19,7 +19,7 @@ describe('Create Questions - e2e', () => {
     app = new Server({ routes: QuestionsRouter });
   });
 
-  it('should be able to create a Question', async () => {
+  it('should be able to create a Question - e2e', async () => {
     const questionAttrs = FakeQuestion();
 
     const response = await request(app.getServer())

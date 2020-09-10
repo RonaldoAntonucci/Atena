@@ -1,12 +1,13 @@
 import './bootstrap';
 
 import { Express } from 'express';
+import { errors } from 'celebrate';
 
 import Server from 'shared/infra/http/server';
-
 import Routes from 'shared/infra/http/routes/index.routes';
 
 import Database from 'shared/infra/typeorm';
+import ErrorHandler from '../errors/Handler';
 
 export default class App {
   private server: Server;
@@ -17,7 +18,11 @@ export default class App {
     this.database = new Database();
 
     await this.database.start();
-    this.server = new Server({ routes: Routes });
+    this.server = new Server({
+      routes: Routes,
+      handlers: [errors(), ErrorHandler],
+      jsonApi: true,
+    });
   }
 
   public listen(port: number): void {
