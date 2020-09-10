@@ -11,6 +11,12 @@ export default class QuestionsRepository implements IQuestionsRepository {
     this.ormRepository = getRepository(Question);
   }
 
+  public async findByTitle(title: string): Promise<Question | undefined> {
+    const question = this.ormRepository.findOne({ title });
+
+    return question;
+  }
+
   public async create({ title, text }: ICreateQuestionDTO): Promise<Question> {
     const question = this.ormRepository.create({ title, text });
 

@@ -1,4 +1,4 @@
-export default interface IQuestion {
+export default class Question {
   id: string;
 
   title: string;

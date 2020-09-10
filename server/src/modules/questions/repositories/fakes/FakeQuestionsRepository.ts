@@ -1,15 +1,16 @@
 import ICreateQuestionDTO from '@modules/questions/dto/ICreateQuestionDTO';
-import IQuestion from '@modules/questions/models/IQuestion';
+import Question from '@modules/questions/models/QuestionModel';
 import IQuestionsRepository from '../IQuestionsRepository';
 
 export default class FakeQuestionsRepository implements IQuestionsRepository {
-  public async create(data: ICreateQuestionDTO): Promise<IQuestion> {
-    const question: IQuestion = {
-      ...data,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      id: new Date().getTime().toString(),
-    };
+  public async findByTitle(): Promise<Question | undefined> {
+    return undefined;
+  }
+
+  public async create(data: ICreateQuestionDTO): Promise<Question> {
+    const question = new Question();
+
+    Object.assign(question, data);
 
     return question;
   }

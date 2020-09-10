@@ -27,6 +27,12 @@
 
 *** *10/09/20*
 
+[ ] - Regra de negócio Create Question Service.
+    [ ] - Teste unitário.
+    [ ] - validação dos títulos.
+
+[ ] - validar dados de entrada.
+
 [ ] - configurar o dbug do vscode.
 
 [ ] - *subir o projeto pra nuvem.*

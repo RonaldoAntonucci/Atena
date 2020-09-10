@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 import Chance from 'chance';
 
-import IQuestion from '../IQuestion';
+import Question from '../QuestionModel';
 
 const chance = new Chance();
 
-export default (attrs: Partial<IQuestion> = {}): IQuestion => ({
+export default (attrs: Partial<Question> = {}): Question => ({
   id: uuidv4(),
 
   title: chance.string({ length: 40 }),

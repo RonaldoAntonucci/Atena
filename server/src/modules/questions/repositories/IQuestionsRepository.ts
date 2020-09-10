@@ -1,6 +1,8 @@
 import ICreateQuestionDTO from '../dto/ICreateQuestionDTO';
-import IQuestion from '../models/IQuestion';
+import Question from '../models/QuestionModel';
 
 export default interface IQuestionsRepository {
-  create(data: ICreateQuestionDTO): Promise<IQuestion>;
+  findByTitle(title: string): Promise<Question | undefined>;
+
+  create(data: ICreateQuestionDTO): Promise<Question>;
 }

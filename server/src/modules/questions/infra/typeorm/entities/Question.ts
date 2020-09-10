@@ -6,14 +6,14 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-import IQuestion from 'modules/questions/models/IQuestion';
+import IQuestion from '@modules/questions/models/QuestionModel';
 
 @Entity('questions')
 export default class Question implements IQuestion {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ unique: true })
   title: string;
 
   @Column({ type: 'text' })
