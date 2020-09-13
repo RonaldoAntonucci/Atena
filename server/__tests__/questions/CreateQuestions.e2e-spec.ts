@@ -20,7 +20,9 @@ describe('Create Questions - e2e', () => {
   it('should be able to create a Question. - e2e', async () => {
     const questionAttrs = FakeQuestion();
 
-    const response = await request(app.http()).post('/').send(questionAttrs);
+    const response = await request(app.http())
+      .post('/')
+      .send({ title: questionAttrs.title, text: questionAttrs.text });
 
     expect(response.status).toBe(200);
     const newQuestion = response.body;

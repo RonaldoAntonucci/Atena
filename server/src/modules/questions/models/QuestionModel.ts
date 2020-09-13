@@ -1,5 +1,5 @@
 export default class Question {
-  id: string;
+  id?: string;
 
   title: string;
 
@@ -7,7 +7,7 @@ export default class Question {
 
   disabledAt?: Date;
 
-  createdAt: Date;
+  createdAt?: Date;
 
-  updatedAt: Date;
+  updatedAt?: Date;
 }
