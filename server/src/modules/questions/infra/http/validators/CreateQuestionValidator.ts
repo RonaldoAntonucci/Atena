@@ -4,7 +4,7 @@ import { RequestHandler } from 'express';
 export default (): RequestHandler =>
   celebrate({
     [Segments.BODY]: {
-      title: Joi.string().required(),
+      title: Joi.string().min(3).max(40).required(),
       text: Joi.string().max(400).min(7).required(),
     },
   });
