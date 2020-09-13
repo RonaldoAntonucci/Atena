@@ -34,8 +34,6 @@
     [x] - validação dos títulos.
     [x] - teste de integração.
 
-[ ] - validar dados de entrada.
+[x] - validar dados de entrada.
 
-[ ] - configurar o dbug do vscode.
-
-[ ] - *subir o projeto pra nuvem.*
+[x] - *subir o projeto pra nuvem.*
